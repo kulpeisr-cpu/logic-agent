@@ -2,7 +2,8 @@ from flask import Flask, request, jsonify, render_template_string
 from anthropic import Anthropic
 
 app = Flask(__name__)
-client = Anthropic()
+import os
+client = Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
 SYSTEM_PROMPT = """Ты — агент логического анализа. Твоя задача — анализировать аргументы пользователя по четырём законам классической логики Аристотеля.
 
